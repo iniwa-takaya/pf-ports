@@ -19,10 +19,11 @@
           </div>
           <div class="col-5 text-right">
             <% if user_signed_in? %>
-              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "log-menu-content" %>
+              <%= link_to 'マイページ', class: "log-menu-left" %>
+              <%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "log-menu-right" %>
             <% else %>
-              <%= link_to 'ログイン', new_user_session_path, class: "log-menu-content-new" %>
-              <%= link_to '新規ユーザー登録', new_user_registration_path, class: "log-menu-content-new" %>
+              <%= link_to 'ログイン', new_user_session_path, class: "log-menu-left" %>
+              <%= link_to '新規登録', new_user_registration_path, class: "log-menu-right" %>
             <% end %>
           </div>
         </div>

@@ -3,7 +3,7 @@
     <div class="col-sm-8 offset-sm-2">
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <h1>新規登録画面</h1>
+      <h2>新規登録画面</h2>
 
       <div class="form-group">
         <%= f.label :email %><br />
@@ -28,49 +28,14 @@
         <%= f.text_field :name, class: "form-control" %>
       </div>
 
-      <div class="form-group mt-4">
-        <label class="form-label">生年月日</label>
-        <div class="form-row">
-          <div class="col-md">
-            <div class="form-row">
-              <div class="col">
-                <select id="" class="form-control" name="" placeholder="年">
-                  <option value="">----</option>
-                  <option>2000</option>                                    
-                </select>
-              </div>
-              <div class="col-auto my-2">年</div>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="form-row">
-              <div class="col">
-                <select id="" class="form-control" name="" placeholder="月">
-                  <option value="">--</option>
-                  <option>1</option>
-
-                </select>
-              </div>
-              <div class="col-auto my-2">月</div>
-            </div>
-          </div>
-          <div class="col-md">
-            <div class="form-row">
-              <div class="col">
-                <select id="" class="form-control" name="" placeholder="日">
-                  <option value="">--</option>
-                  <option>1</option>
-                </select>
-              </div>
-              <div class="col-auto my-2">日</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
       <div class="form-group">
         <%= f.label :phone_number %><br />
         <%= f.text_field :phone_number, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :nick_name %><br />
+        <%= f.text_field :nick_name, class: "form-control" %>
       </div>
 
       <div class="form-group">
@@ -83,8 +48,20 @@
       </div>
 
       <div class="form-group">
-        <%= f.label :nick_name %><br />
-        <%= f.text_field :nick_name, class: "form-control" %>
+        <%= f.label :生年月日 %>
+        <div class='input-birth-wrap'>
+          <%= raw sprintf(
+            f.date_select(
+              :birthday,
+                        class:'select-birth',
+                        id:"birth-date",
+                        use_month_numbers: true,
+                        prompt:'--',
+                        start_year: (Time.now.year - 95),
+                        end_year: (Time.now.year - 5),
+                        date_separator: '%s'),
+                      "<p> 年 </p>", "<p> 月 </p>") + "<p> 日 </p>" %>
+        </div>
       </div>
 
       <div class="actions">
